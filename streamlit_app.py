@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 st.set_page_config(
-    page_title="لوحة التنبؤ الطبي والصحي",
+    page_title="Medical Health Prediction Dashboard",
     page_icon="🩺",
 )
 
@@ -28,16 +28,16 @@ def user_input_features():
 
 df = user_input_features()
 
-st.sub("البيانات المدخلة للمريض:")
+st.subheader("البيانات المدخلة للمريض:")
 st.write(df)
 
 if st.button("إجراء التحليل والتنبؤ"):
-    # نموذج تجريبي مبدئي للتنبؤ بناءً على المؤشرات
     risk_score = (df['BMI'][0] * 0.4) + (df['Blood Pressure'][0] * 0.2) + (df['Glucose'][0] * 0.1)
     
-    st.sub("نتائج التحليل:")
+    st.subheader("نتائج التحليل:")
     if risk_score > 60:
         st.error("⚠️ تحذير: المؤشرات تشير إلى احتمالية عالية وجود خطورة أو مؤشرات مبكرة للجلطات. يُنصح بمراجعة الطبيب المختص فوراً.")
     else:
         st.success("✅ المؤشرات مستقرة ضمن النطاق الطبيعي ولا توجد مخاطر ظاهرة حالياً.")
+
 
